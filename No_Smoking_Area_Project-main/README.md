@@ -1,6 +1,4 @@
-
-# 🚭 Smoking Detection System – Final Project  
-**AI_SW개발자 과정 05/13 Final Project Day**  
+# 🚭 Smoking Detection System Project  
 
 ---
 
