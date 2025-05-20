@@ -1,114 +1,142 @@
-##Project##
 
+# 🚭 Smoking Detection System – Final Project  
+**AI_SW개발자 과정 05/13 Final Project Day**  
 
-## AI_SW개발자 과정 05/13 finalprojectDay ##
-## Team Member : 강태훈, 임정환, 박성호 ##
+---
 
+## 📦 프로젝트 개요
 
-1. Clone the Project
-First, you need to clone the project from GitHub.
+본 프로젝트는 **YOLOv5 기반의 흡연자 탐지 시스템**으로,  
+Flask 서버와 웹캠 스트리밍을 활용하여 **금연 구역 내 실시간 흡연 여부를 감지**하고,  
+로그 및 통계를 자동으로 저장 및 시각화하는 AI 비전 시스템입니다.
 
-1.1 Install Git
-Windows:
+---
 
-Download and install Git from Git download page.
+## 🧪 1. 프로젝트 클론
 
-Mac/Linux:
+### 1.1 Git 설치
 
-Open the terminal and install Git using the following command:
+**Windows**:  
+Git 공식 사이트에서 설치
 
-bash
+**Mac/Linux**:
 
-sudo apt install git  # Ubuntu/Linux
-brew install git      # Mac
-1.2 Clone the Project from GitHub
-bash
+```bash
+sudo apt install git    # Ubuntu
+brew install git        # Mac
+```
 
+### 1.2 GitHub에서 프로젝트 클론
+
+```bash
 git clone https://github.com/yourusername/smoking-detection-system.git
 cd smoking-detection-system
-2. Install Required Libraries
-To run the project, you need to install the libraries listed in requirements.txt.
+```
 
-2.1 Set Up Virtual Environment (Optional)
-It’s recommended to use a virtual environment to avoid dependency conflicts with other projects.
+---
 
-bash
-복사
-편집
-# Create a virtual environment (Windows)
+## 📦 2. 라이브러리 설치
+
+### 2.1 가상환경 설정 (선택사항)
+
+```bash
+# 가상환경 생성 (Windows)
 python -m venv venv
 
-# Activate the virtual environment (Windows)
-venv\Scripts\activate
+# 가상환경 활성화
+venv\Scripts\activate        # Windows
+source venv/bin/activate      # Mac/Linux
+```
 
-# Activate the virtual environment (Mac/Linux)
-source venv/bin/activate
-2.2 Install the Required Libraries
-bash
+### 2.2 필요 라이브러리 설치
 
+```bash
 pip install -r requirements.txt
-3. Download the YOLOv5 Model
-The project uses the YOLOv5 model to detect smokers. You need the best.pt model file.
+```
 
-3.1 Prepare the YOLOv5 Model
-If you already have the best.pt model file, place it in the models/ folder.
+---
 
-If you need to download a new model, you can get it from the YOLOv5 GitHub.
+## 🧠 3. YOLOv5 모델 다운로드
 
-4. Set Up Webcam
-The project uses the webcam to stream video in real-time and detect smokers. Make sure your webcam is properly connected.
+### 3.1 모델 파일 준비
 
-4.1 Check Webcam Connection
-Ensure that the webcam is correctly connected. On Windows, check the Device Manager. On Linux, use the lsusb command to verify the connection.
+- 이미 `best.pt` 모델이 있다면 `/models` 폴더에 복사  
+- 필요 시 [YOLOv5 GitHub](https://github.com/ultralytics/yolov5)에서 다운로드 가능
 
-4.2 Allow Camera Access (Browser)
-Make sure the browser has permission to use the camera for video streaming. Allow camera access when prompted by the browser.
+---
 
-5. Run the Server
-Start the Flask server to launch the web application.
+## 🎥 4. 웹캠 설정
 
-5.1 Run the Flask Server
-bash
+### 4.1 연결 확인
+
+- Windows: 장치 관리자에서 웹캠 확인  
+- Linux: `lsusb` 명령어로 연결 확인
+
+### 4.2 브라우저 접근 허용
+
+- 브라우저에서 카메라 접근 허용 팝업을 수락해야 스트리밍 가능
+
+---
+
+## 🚀 5. 서버 실행
+
+### 5.1 Flask 서버 실행
+
+```bash
 python app.py
-The server will run, and you can access the web application at http://127.0.0.1:5000/.
+```
 
-5.2 Access the Web App
-Open a browser and go to http://127.0.0.1:5000/.
+웹 브라우저에서 [http://127.0.0.1:5000](http://127.0.0.1:5000) 접속
 
-You should see the video stream where the system detects smokers in real-time.
+---
 
-6. Smoking Detection and Data Logging
-6.1 Detecting Smokers
-While streaming the video in the web application, if a smoker is detected, a warning message ("Stop Smoking Please.") will appear on the screen.
+## 📸 6. 흡연 감지 및 통계
 
-The detected smoker data is logged in the server’s smoker folder.
+### 6.1 감지 기능
 
-6.2 Viewing Smoking Statistics
-On the web page, you can view the smoking statistics, including the number of times smoking was detected.
+- 실시간 스트리밍 중 흡연자 감지 시 "Stop Smoking Please." 문구 표시  
+- 감지된 이미지 `/smoker` 폴더에 자동 저장
 
-The statistics will update each time a smoker is detected.
+### 6.2 통계 시각화
 
-7. Shut Down the Project
-To stop the project, terminate the Flask server.
+- 메인 웹페이지에 **흡연 감지 횟수** 및 통계 표시  
+- 흡연 발생 시마다 수치 자동 갱신
 
-bash
+---
 
-# Stop the server by pressing Ctrl + C
-8. Additional Setup (Optional)
-Adjust Camera Index: If the webcam does not work, try changing the camera index in the code from cv2.VideoCapture(0) to another number.
+## 🛑 7. 서버 종료
 
-Train the Model: If you want higher accuracy, you can fine-tune the YOLOv5 model or perform additional training for better performance.
+```bash
+Ctrl + C  # 서버 종료
+```
 
-📋 Project Structure
-bash
+---
 
-/your-flask-project
-    /static
-        /images
-            police_logo.png   ← Police logo image
-        /css
-            style.css         ← Web page styles
-    /templates
-        index.html           ← Main web page
-    app.py                    ← Flask server code
-    requirements.txt          ← List of required libraries
+## 🛠 8. 추가 설정 (선택)
+
+- **카메라 인덱스 조정**: `cv2.VideoCapture(0)`의 인덱스 값을 1 또는 2로 변경해보세요
+- **YOLOv5 모델 재학습**: 더 나은 성능을 위해 사용자 정의 데이터셋으로 추가 학습 가능
+
+---
+
+## 🗂 프로젝트 폴더 구조
+
+```
+/smoking-detection-system
+├── app.py
+├── requirements.txt
+├── /static
+│   ├── /images
+│   │   └── police_logo.png
+│   └── /css
+│       └── style.css
+├── /templates
+│   └── index.html
+└── /models
+    └── best.pt (YOLO 모델)
+```
+
+---
+
+> 본 프로젝트는 금연 구역에서의 비흡연 환경을 조성하기 위해  
+> 실시간 비전 기술을 적용한 사회적 가치 기반 AI 응용 프로젝트입니다.
